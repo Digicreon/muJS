@@ -341,6 +341,23 @@ Supported values: `get`, `post`, `put`, `patch`, `delete`, `sse`.
 
 These headers allow the server to detect µJS requests and adapt its response (e.g. return a fragment instead of a full page, skip analytics, return lighter content on prefetch).
 
+### Custom headers
+
+You can send additional HTTP headers with every request by setting the `headers` option in the configuration:
+
+```javascript
+mu.init({
+    headers: {
+        "Authorization": "Bearer " + myToken,
+        "Accept-Language": "fr-FR"
+    }
+});
+```
+
+These headers are merged into both regular and prefetch requests. µJS's internal headers (`X-Requested-With`, `X-Mu-Mode`, `X-Mu-Method`, `X-Mu-Prefetch`) always take precedence and cannot be overridden through this option.
+
+For per-request or dynamic headers (e.g. a fresh CSRF token on each request), listen to the `mu:before-fetch` event and modify `event.detail.config` instead.
+
 
 ## Triggers
 
@@ -773,4 +790,3 @@ DOM morphing requires a separate library (idiomorph recommended). Without it, µ
 
 **µJS** is developed by [Digicreon](https://github.com/Digicreon).
 Website: [mujs.org](https://mujs.org)
-
