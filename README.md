@@ -790,3 +790,4 @@ DOM morphing requires a separate library (idiomorph recommended). Without it, µ
 
 **µJS** is developed by [Digicreon](https://github.com/Digicreon).
 Website: [mujs.org](https://mujs.org)
+
